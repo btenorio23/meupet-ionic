@@ -1,0 +1,65 @@
+page-login {
+
+  .login-content {
+    background: #56CA96;
+
+    .logo-row {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .login-box {
+      background: orange;
+      padding: 20px 20px 20px 20px;
+      margin-top: 150px;
+      position: relative;
+    }
+
+    ion-row {
+       align-items: baseline;
+       text-align: left;
+     }
+
+     ion-item {
+         border-radius: 30px !important;
+         padding-left: 30px !important;
+         font-size: 0.9em;
+         margin-bottom: 50px;
+         border: 1px solid #ffffff;
+         border-bottom: 0px !important;
+         box-shadow: none !important;
+     }
+
+     .signup-col {
+       margin: 0px 16px 0px 16px;
+       padding-bottom: 10px;
+     }
+
+     .item-inner {
+       border-bottom-color: #ffffff !important;
+       box-shadow: none !important;
+     }
+
+     .submit-btn {
+       background: orange;
+       border-radius: 20px !important;
+       border: 1px solid orange;
+     }
+
+     .register-btn {
+       color: #ffffff;
+       font-size: 1em;
+
+     }
+  }
+
+  .background-style {
+    background-image: url("../assets/imgs/cao-feliz-correndo.jpg");
+    //width: 100%;
+    //height: auto;
+    background-position:left;
+    background-repeat: no-repeat;
+    //background-size: 100% 100%;
+  }
+
+}
