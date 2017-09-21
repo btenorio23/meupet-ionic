@@ -14,50 +14,18 @@
 
 
 <ion-content padding>
-    <div padding>
-      <ion-segment [(ngModel)]="meu_pet">
-        <ion-segment-button value="status">
-          Nome do Pet
-        </ion-segment-button>
-      </ion-segment>
-    </div>
-
-    <div [ngSwitch]="meu_pet">
-      <ion-list *ngSwitchCase="'status'">
-        <ion-list>
-          <ion-item>
-            <ion-thumbnail item-start>
-              <img src="img/thumbnail-totoro.png">
-            </ion-thumbnail>
-            <h2>Joy Rocket</h2>
-            <p>Poddle - Ótimo em corridas</p>
-            <button ion-button (click)="log()" clear item-end>Editar Pet</button>
-
-          </ion-item>
-        </ion-list>
-      </ion-list>
-      <ion-list inset>
-        <ion-item>
-            <ion-label floating>Nome do Pet</ion-label>
-            <ion-input type="text" disabled="true"  ></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label floating>Raça</ion-label>
-            <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label floating>Descrição</ion-label>
-            <ion-input type="text"></ion-input>
-        </ion-item>
-        <h2>User List</h2>
-          <ion-list>
-            <ion-item *ngFor="let user of users">
-              {{user.nome}}
-            </ion-item>
-          </ion-list>
-      </ion-list>
-
-    </div>
+    
+    <ion-list *ngFor="let pet of pets">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="../assets/imgs/{{pet.nome}}.jpg">
+        </ion-thumbnail>
+        <h2>{{pet.nome}}</h2> 
+        <h4>| {{pet.raca}} |</h4>
+        <p>{{pet.descricaoPet}}</p>
+        <button ion-button clear item-end (click)="editarPet()">Editar</button>
+      </ion-item>
+    </ion-list>
 
   <ion-fab bottom right>
     <button ion-fab mini="primary" (click)='adicionaPet()'><ion-icon name="add"></ion-icon></button>

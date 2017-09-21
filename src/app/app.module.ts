@@ -12,6 +12,8 @@ import { PasseadorPage } from '../pages/passeador/passeador';
 import { CaoPage } from '../pages/cao/cao';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { AjustesPage } from '../pages/ajustes/ajustes';
+// import { DetalhesCaoPage } from '../pages/detalhes-cao/detalhes-cao';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,6 +35,7 @@ import { MeupetapiProvider } from '../providers/meupetapi/meupetapi';
     // CaoPage,
     TabsPage,
     AjustesPage,
+    // DetalhesCaoPage,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { MeupetapiProvider } from '../providers/meupetapi/meupetapi';
     PerfilPage,
     TabsPage,
     AjustesPage,
+    // DetalhesCaoPage,
   ],
   providers: [
     StatusBar,
