@@ -1,5 +1,6 @@
 {
   "name": "passecao_ionic",
-  "app_id": "c0f60811",
-  "type": "ionic-angular"
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {}
 }

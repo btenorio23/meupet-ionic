@@ -2,7 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
+import { HttpModule } from '@angular/http';
 
 //  PAGES
 // import { AboutPage } from '../pages/about/about';
@@ -11,6 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { PasseadorPage } from '../pages/passeador/passeador';
 import { CaoPage } from '../pages/cao/cao';
 import { PerfilPage } from '../pages/perfil/perfil';
+import { AjustesPage } from '../pages/ajustes/ajustes';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,6 +21,7 @@ import { CaoPageModule } from '../pages/cao/cao.module';
 
 // PROVIDERS
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { MeupetapiProvider } from '../providers/meupetapi/meupetapi';
 
 @NgModule({
   declarations: [
@@ -29,12 +31,14 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     PasseadorPage,
     PerfilPage,
     // CaoPage,
-    TabsPage
+    TabsPage,
+    AjustesPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    CaoPageModule
+    CaoPageModule,
+    HttpModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,13 +48,15 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     PasseadorPage,
     CaoPage,
     PerfilPage,
-    TabsPage
+    TabsPage,
+    AjustesPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthServiceProvider
+    AuthServiceProvider,
+    MeupetapiProvider
   ]
 })
 export class AppModule {}

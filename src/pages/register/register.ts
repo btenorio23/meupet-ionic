@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, IonicPage } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
+// Habilitar conexão com HTTP
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
 @IonicPage()
 @Component({
   selector: 'page-register',
@@ -10,8 +14,23 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 export class RegisterPage {
   createSuccess = false;
   registerCredentials = { email: '', password: '' };
+  pets: any 
 
-  constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController) { }
+  constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, public http: Http) { 
+
+      this.http.get('api/v1/usuario').map(res => res.json()).subscribe(
+      data => {
+        // console.log(data[0]);
+        this.pets = data;
+      },
+        err => {
+            console.log("Oops, não consegui recuperar os objetos");
+        }
+      );
+
+  }
+
+
 
   public register() {
     this.auth.register(this.registerCredentials).subscribe(success => {

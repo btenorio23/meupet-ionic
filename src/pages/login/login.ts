@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { TabsPage } from '../tabs/tabs';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @IonicPage()
 @Component({
@@ -11,8 +13,11 @@ import { TabsPage } from '../tabs/tabs';
 export class LoginPage {
   loading: Loading;
   registerCredentials = { email: '', password: '' };
- 
-  constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
+  pets:any; 
+
+
+  constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController, public http: Http) { 
+  }
  
   public createAccount() {
     this.nav.push('RegisterPage');
