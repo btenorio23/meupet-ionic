@@ -33,4 +33,19 @@ data:any;
     });
   }
 
+   getUsuarios() {
+    if (this.data) {
+      return Promise.resolve(this.data);
+    }
+
+    return new Promise(resolve => {
+      this.http.get(this.url+'usuario')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
 }

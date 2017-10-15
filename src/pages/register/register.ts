@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, IonicPage } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-
-// Habilitar conexão com HTTP
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { MeupetapiProvider } from '../../providers/meupetapi/meupetapi';
 
 @IonicPage()
 @Component({
@@ -15,39 +12,19 @@ export class RegisterPage {
   createSuccess = false;
   registerCredentials = { email: '', password: '' };
   pets: any 
+  novoUsuario:any;
 
-  constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, public http: Http) { 
+  constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private apiProvider: MeupetapiProvider) {}
 
-      this.http.get('api/v1/usuario').map(res => res.json()).subscribe(
-      data => {
-        // console.log(data[0]);
-        this.pets = data;
-      },
-        err => {
-            console.log("Oops, não consegui recuperar os objetos");
-        }
-      );
-
+  getUsuario() {
+    this.apiProvider.getUsuarios()
+    .then(data => {
+      this.pets = data;
+    });
   }
 
-
-
   public register() {
-    this.auth.register(this.registerCredentials).subscribe(success => {
-      if (success) {
-        this.createSuccess = true;
-
-
-        this.showPopup("Conta criada!", "");
-
-      } else {
-        this.showPopup("Error", "Problem creating account.");
-      }
-    },
-      error => {
-        this.showPopup("Error", error);
-      });
-
+      this.pets = this.getUsuario()    
   }
 
   showPopup(title, text) {

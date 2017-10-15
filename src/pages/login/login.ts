@@ -30,11 +30,11 @@ export class LoginPage {
         // this.nav.setRoot('HomePage');
         this.nav.setRoot(TabsPage);
       } else {
-        this.showError("Access Denied");
+        // this.showError("Access Denied");
       }
     },
       error => {
-        this.showError(error);
+        // this.showError(error);
       });
   }
  

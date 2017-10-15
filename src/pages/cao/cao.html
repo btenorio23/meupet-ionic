@@ -23,7 +23,8 @@
         <h2>{{pet.nome}}</h2> 
         <h4>| {{pet.raca}} |</h4>
         <p>{{pet.descricaoPet}}</p>
-        <button ion-button clear item-end (click)="editarPet()">Editar</button>
+        <!-- <button ion-button clear item-end [navPush]="detalhesCao">Editar</button> -->
+        <button ion-button clear item-end (click)="modoEditar(pet)">Editar</button>
       </ion-item>
     </ion-list>
 

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+// import { DetalhesCaoPage } from '../detalhes-cao/detalhes-cao';
 import { MeupetapiProvider } from '../../providers/meupetapi/meupetapi';
-
 /**
  * Generated class for the CaoPage page.
  *
@@ -15,12 +14,13 @@ import { MeupetapiProvider } from '../../providers/meupetapi/meupetapi';
   templateUrl: 'cao.html',
 })
 export class CaoPage {
-
+  // detalhesCao = DetalhesCaoPage;
+  petEscolhido: undefined;
 
    pets:any;
-  constructor(public nav: NavController, public navParams: NavParams, private apiProvider: MeupetapiProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private apiProvider: MeupetapiProvider) {
   	this.pets = this.getUsers()
-  	console.log(this.pets)
+  	// console.log(this.pets)
   }
 
   getUsers() {
@@ -28,15 +28,21 @@ export class CaoPage {
     .then(data => {
       this.pets = data;
     });
+    // console.log(this.pets)
   }
 
-  editarPet() {
-  	console.log("AHhh");
-  	this.nav.push('DetalhesCaoPage');
+  modoEditar(pet) {
+    console.log("Pet escolhido foi: " + pet.nome);
+    this.navCtrl.push("DetalhesCaoPage", {pet});
+  }
+
+  adicionaPet() {
+    console.log("adicionando um novo pet");
+    this.navCtrl.push("DetalhesCaoPage");
   }
 
   ionViewDidLoad() {
-    // this.meu_pet = 'status';
+    // console.log(this.pets)
   }
 
 }

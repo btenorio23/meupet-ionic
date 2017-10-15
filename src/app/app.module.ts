@@ -14,6 +14,8 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { AjustesPage } from '../pages/ajustes/ajustes';
 // import { DetalhesCaoPage } from '../pages/detalhes-cao/detalhes-cao';
 
+// import { DetalhesCaoPage } from '../pages/detalhes-cao/detalhes-cao';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
