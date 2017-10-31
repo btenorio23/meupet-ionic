@@ -30,6 +30,10 @@ export class PasseadoresPage {
 
   }
 
+  public abreMapa() {
+  	this.navCtrl.push('ContrataServicoPage');
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad PasseadoresPage');
   }
