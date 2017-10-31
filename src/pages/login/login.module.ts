@@ -12,7 +12,8 @@ import { HttpModule } from '@angular/http';
     HttpModule,
   ],
   exports: [
-    LoginPage
+    LoginPage,
+
   ]
 })
 export class LoginPageModule {}
