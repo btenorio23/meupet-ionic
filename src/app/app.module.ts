@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
-
+import { Geolocation } from '@ionic-native/geolocation';
 //  PAGES
 // import { AboutPage } from '../pages/about/about';
 // import { HomePage } from '../pages/home/home';
@@ -12,6 +12,8 @@ import { PasseadorPage } from '../pages/passeador/passeador';
 import { CaoPage } from '../pages/cao/cao';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { AjustesPage } from '../pages/ajustes/ajustes';
+import { ContrataServicoPage } from '../pages/contrata-servico/contrata-servico';
+import { HistoricoServicosPage } from '../pages/historico-servicos/historico-servicos'
 // import { DetalhesCaoPage } from '../pages/detalhes-cao/detalhes-cao';
 
 // import { DetalhesCaoPage } from '../pages/detalhes-cao/detalhes-cao';
@@ -22,7 +24,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 // MODULES
 import { CaoPageModule } from '../pages/cao/cao.module';
-
+import { ContrataServicoPageModule } from '../pages/contrata-servico/contrata-servico.module';
+import { HistoricoServicosPageModule } from '../pages/historico-servicos/historico-servicos.module';
 // PROVIDERS
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { MeupetapiProvider } from '../providers/meupetapi/meupetapi';
@@ -37,12 +40,15 @@ import { MeupetapiProvider } from '../providers/meupetapi/meupetapi';
     // CaoPage,
     TabsPage,
     AjustesPage,
+    // ContrataServicoPage,
     // DetalhesCaoPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     CaoPageModule,
+    ContrataServicoPageModule,
+    HistoricoServicosPageModule,
     HttpModule,
   ],
   bootstrap: [IonicApp],
@@ -55,6 +61,8 @@ import { MeupetapiProvider } from '../providers/meupetapi/meupetapi';
     PerfilPage,
     TabsPage,
     AjustesPage,
+    ContrataServicoPage,
+    HistoricoServicosPage,
     // DetalhesCaoPage,
   ],
   providers: [
@@ -62,7 +70,8 @@ import { MeupetapiProvider } from '../providers/meupetapi/meupetapi';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
-    MeupetapiProvider
+    Geolocation,
+    MeupetapiProvider,
   ]
 })
 export class AppModule {}

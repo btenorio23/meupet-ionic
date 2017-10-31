@@ -1,53 +1,53 @@
-.ios, .md {
+// .ios, .md {
 
-    page-perfil {
+//     page-perfil {
 
-        .meu_tesla {
-          text-align: center;
+//         .meu_tesla {
+//           text-align: center;
 
-        }
+//         }
 
-        .tesla_querido {
-          color: black;
-          font-size: 24px;
-        }
+//         .tesla_querido {
+//           color: black;
+//           font-size: 24px;
+//         }
 
-        .scroll-content {
-            background-color: #c2e9fb;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+//         .scroll-content {
+//             background-color: #c2e9fb;
+//             align-items: center;
+//             display: flex;
+//             flex-direction: column;
+//             justify-content: center;
+//         }
 
-        ion-avatar > img {
-            // margin: auto;
-            // width: 80px;
-            // height: auto;
-            display: block;
-                margin: 0 auto;
-                width:70%;
-                height:auto;
-        }
+//         ion-avatar > img {
+//             // margin: auto;
+//             // width: 80px;
+//             // height: auto;
+//             display: block;
+//                 margin: 0 auto;
+//                 width:70%;
+//                 height:auto;
+//         }
 
-        ion-input {
-            background-color: map-get($colors, light);
-            padding-left: 10px;
-            color: #6c6c6c;
-        }
+//         ion-input {
+//             background-color: map-get($colors, light);
+//             padding-left: 10px;
+//             color: #6c6c6c;
+//         }
 
-        ion-label {
-            color: #6c6c6c;
-        }
+//         ion-label {
+//             color: #6c6c6c;
+//         }
 
-        [floating] {
-            margin-left: 10px;
-        }
+//         [floating] {
+//             margin-left: 10px;
+//         }
 
-        button {
-            width: 90%;
-        }
+//         button {
+//             width: 90%;
+//         }
 
-    }
+//     }
 
-}
+// }

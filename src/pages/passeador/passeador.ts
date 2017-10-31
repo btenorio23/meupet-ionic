@@ -46,7 +46,7 @@ export class PasseadorPage {
 
   public abrePedidoPasseio() {
       console.log('enviando pedido de passeio do usuario: ');
-      this.navCtrl.push('PasseadoresPage');
+      this.navCtrl.push('ContrataServicoPage');
   }
 
 
