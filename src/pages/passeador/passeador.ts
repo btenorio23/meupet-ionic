@@ -50,5 +50,10 @@ export class PasseadorPage {
       this.navCtrl.push('PasseadoresPage');
   }
 
+  public abreDescricao() {
+      // this.navCtrl.push('ContrataServicoPage');
+      this.navCtrl.push('PasseadoresPage');
+  }
+
 
 }

@@ -36,7 +36,4 @@ export class CaoPageModule {
 	log():void {
 	 console.log('Your message here');
 	};
-
-	adicionaPet() {
-	}
 }

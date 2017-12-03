@@ -14,10 +14,11 @@ export class TabsPage {
 
   // tab1Root = HomePage;
   // tab2Root = AboutPage;
+  // tab1Root = InicioPage;
   tab1Root = PasseadorPage;
   tab2Root = CaoPage;
   tab3Root = PerfilPage;
-  tab4Root = AjustesPage;
+  // tab4Root = AjustesPage;
 
   constructor() {
 

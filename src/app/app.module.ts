@@ -9,6 +9,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 // import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { PasseadorPage } from '../pages/passeador/passeador';
+import { InicioPage } from '../pages/inicio/inicio';
 import { CaoPage } from '../pages/cao/cao';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { AjustesPage } from '../pages/ajustes/ajustes';
@@ -57,6 +58,7 @@ import { MeupetapiProvider } from '../providers/meupetapi/meupetapi';
     // AboutPage,
     // HomePage,
     PasseadorPage,
+    InicioPage,
     PerfilPage,
     // CaoPage,
     TabsPage,
@@ -79,6 +81,7 @@ import { MeupetapiProvider } from '../providers/meupetapi/meupetapi';
     // AboutPage,
     // HomePage,
     PasseadorPage,
+    InicioPage,
     CaoPage,
     PerfilPage,
     TabsPage,
