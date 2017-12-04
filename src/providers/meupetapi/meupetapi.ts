@@ -40,7 +40,7 @@ constructor(public http: Http) {
      headers.append('Content-Type', 'application/json');
     console.log('Dando post em objetio Pet', data);
     data.idade = '1996-12-26';
-    this.http.post(this.url + 'usuario/', JSON.stringify(data), {headers: headers})
+    this.http.post(this.url + 'usuario/new', JSON.stringify(data), {headers: headers})
       .map(res => res.json())
       .subscribe(data => {console.log(data);})
       // .subscribe(
@@ -48,48 +48,18 @@ constructor(public http: Http) {
       //   error => {console.log("Oooops!");});
   }
 
-  getUsuarioExemplo(data) {
-    console.log(this.url + 'usuario/');
-    return this.http.get(this.url + 'usuario/')
+  getUsuario(data) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log('Dado sendo trabalhado', data._value);
+    data = JSON.stringify({
+        "email": data._value.email + '',
+        "senha": data._value.senha + '',
+     });
+    console.log('Dado sendo enviado para login', data);
+    return this.http.post(this.url + 'login/',  JSON.stringify(data), {headers: headers})
     .map(res => res.json())
     .subscribe(data => {console.log('Dados retornados', data);});
-  }
-
-  getUsuario(usuarioEsperado) {
-    usuarioEsperado = usuarioEsperado._value;
-    // console.log('Dando sendo enviado para getUsuario', data);
-    // let myHeaders = new Headers();
-    // myHeaders.append('Content-Type', 'application/json');    
-    // let myParams = new URLSearchParams();
-    // myParams.append('email', data.email);
-     // if (this.data) {
-     //   console.log('aquiiiiiiiiiiiii')
-     //   return Promise.resolve(this.data);
-     // }
-     // let options = new RequestOptions({ headers: myHeaders, params: myParams });
-     return new Promise(resolve => {
-     this.http.get(this.url+'usuario/')
-         .map(res => res.json())
-         .subscribe(data => {
-           this.resultado = data;
-           resolve(this.resultado);
-           console.log('Resultado Final: ')
-            this.resultado.forEach(function(resultado)  {
-                if(resultado.email == usuarioEsperado.email) {
-                    if(resultado.senha == usuarioEsperado.senha) {
-                      console.log('Return true')
-                      return true;
-                    }
-                    console.log('Return false')
-                    return false;
-                }
-                else {
-                  console.log('Return false')
-                    return false;
-                }
-            })
-         });
-     });
   }
 
   getUsers() {

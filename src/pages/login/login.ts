@@ -37,16 +37,15 @@ export class LoginPage {
   }
  
   public login(infoLogin) {
-    console.log('COMEÇANDO LOGIN')
-    // this.showLoading()
-    // console.log('Dados após clicar em Login: ', infoLogin._value)
-    let temp = this.apiProvider.getUsuario(infoLogin)
-    if(this.apiProvider.getUsuario(infoLogin)) {
-      this.nav.setRoot(TabsPage);
-    }
-    else {
-        // this.showError("Access Denied");
-     }
+    this.nav.setRoot(TabsPage);
+    // console.log('COMEÇANDO LOGIN')
+    // let temp = this.apiProvider.getUsuario(infoLogin)
+    // if(this.apiProvider.getUsuario(infoLogin)) {
+    //   this.nav.setRoot(TabsPage);
+    // }
+    // else {
+    //     // this.showError("Access Denied");
+    //  }
   }
  
   showLoading() {
