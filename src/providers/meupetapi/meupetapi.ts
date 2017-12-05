@@ -35,6 +35,18 @@ export class MeupetapiProvider {
 
   }
 
+  postCriacaoUsuario(informacaoUsuario)
+  {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    this.http.post(this.url + 'usuario/login/', informacaoUsuario, {headers: headers})
+      .map(res => res.json())
+      .subscribe(data => {console.log(data)})
+
+  }
+
+
   // getUsuario(data) {
   //   let headers = new Headers();
   //   headers.append('Content-Type', 'application/json');

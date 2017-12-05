@@ -18,48 +18,51 @@ export class RegisterPage {
     this.detalhesUsuarioForm = formBuilder.group({
       primeiroNome: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       segundoNome: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      idade: [''],
+      username: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       email: [''],
-      senha: [''],
+      password: [''],
     });
   }
 
   showCancela() {
-      let confirm = this.alertCtrl.create({
-            title: 'Deseja cancelar a alteração?',
-            buttons: [
-              {
-                text: 'NÃO',
-                handler: () => {
-                  // console.log('Disagree clicked');
-                }
-              },
-              {
-                text: 'SIM',
-                handler: () => {
-                  this.navCtrl.pop();
-                }
-              }
-            ]
-          });
-          confirm.present();
-    }
+    let confirm = this.alertCtrl.create({
+      title: 'Deseja cancelar a alteração?',
+      buttons: [
+        {
+          text: 'NÃO',
+          handler: () => {
+            // console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'SIM',
+          handler: () => {
+            this.navCtrl.pop();
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
 
-    save(data){
-        this.submitAttempt = true;
-        if(!this.detalhesUsuarioForm.valid){
-            console.log("Dados Invalidos");
-        }
-        // else {this.navCtrl.pop();}
-        else {
-          data._value.descricaoUsuario = '-'
-          data._value.tipousuario = ['1']
-          console.log('Detalhes Usuario', data._value)
-          this.apiProvider.postUsuario(data._value)
-          this.navCtrl.popToRoot();
-          this.navCtrl.push('LoginPage');
-        }
-    }
+  registraUsuario(informacoesUsuario) {
+    informacoesUsuario.tipousuario = ['2']
+    console.log(informacoesUsuario)
+
+    // this.submitAttempt = true;
+    // if (!this.detalhesUsuarioForm.valid) {
+    //   console.log("Dados Invalidos");
+    // }
+    // // else {this.navCtrl.pop();}
+    // else {
+    //   data._value.descricaoUsuario = '-'
+    //   data._value.tipousuario = ['1']
+    //   console.log('Detalhes Usuario', data._value)
+    //   this.apiProvider.postUsuario(data._value)
+    //   this.navCtrl.popToRoot();
+    //   this.navCtrl.push('LoginPage');
+    // }
+  }
 
   // getUsuario() {
   //   this.apiProvider.getUsuarios()
