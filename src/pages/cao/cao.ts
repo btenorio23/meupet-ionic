@@ -19,12 +19,12 @@ export class CaoPage {
 
    pets:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private apiProvider: MeupetapiProvider) {
-  	this.pets = this.getUsers()
+  	this.pets = this.getPets()
   	// console.log(this.pets)
   }
 
-  getUsers() {
-    this.apiProvider.getUsers()
+  getPets() {
+    this.apiProvider.getPets()
     .then(data => {
       this.pets = data;
     });

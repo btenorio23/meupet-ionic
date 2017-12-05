@@ -27,27 +27,25 @@ export class LoginPage {
 
   constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController, public http: Http, private apiProvider: MeupetapiProvider, public formBuilder: FormBuilder) {
     this.loginUsuario = formBuilder.group({
-      email: [''],
-      senha: [''],
+      username: [''],
+      password: [''],
     });
   }
- 
+
   public createAccount() {
     this.nav.push('RegisterPage');
   }
- 
+
   public login(infoLogin) {
+    infoLogin.primeiroNome = ''
+    infoLogin.segundoNome = ''
+    infoLogin.tipousuario = ''
+    infoLogin.email = ''
+    // console.log(infoLogin)
+    this.apiProvider.postAutenticacaoUsuario(JSON.stringify(infoLogin))
     this.nav.setRoot(TabsPage);
-    // console.log('COMEÇANDO LOGIN')
-    // let temp = this.apiProvider.getUsuario(infoLogin)
-    // if(this.apiProvider.getUsuario(infoLogin)) {
-    //   this.nav.setRoot(TabsPage);
-    // }
-    // else {
-    //     // this.showError("Access Denied");
-    //  }
   }
- 
+
   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: 'Please wait...',
@@ -55,10 +53,10 @@ export class LoginPage {
     });
     this.loading.present();
   }
- 
+
   // showError(text) {
   //   this.loading.dismiss();
- 
+
   //   let alert = this.alertCtrl.create({
   //     title: 'Fail',
   //     subTitle: text,
