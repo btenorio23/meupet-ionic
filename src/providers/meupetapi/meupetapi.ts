@@ -14,25 +14,12 @@ export class MeupetapiProvider {
     console.log('Hello MeupetapiProvider Provider');
   }
 
-  postUsuario(data) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    console.log('Dando post em objetio Pet', data);
-    data.idade = '1996-12-26';
-    this.http.post(this.url + 'usuario/new', JSON.stringify(data), { headers: headers })
-      .map(res => res.json())
-      .subscribe(data => { console.log(data); })
-  }
-
   postAutenticacaoUsuario(informacaoUsuario)
   {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    this.http.post(this.url + 'usuario/login/', informacaoUsuario, {headers: headers})
-      .map(res => res.json())
-      .subscribe(data => {console.log(data)})
-
+    return this.http.post(this.url + 'usuario/login/', informacaoUsuario, {headers: headers}).map(res => res.json())
   }
 
   postCriacaoUsuario(informacaoUsuario)

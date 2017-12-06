@@ -42,8 +42,7 @@ export class LoginPage {
     infoLogin.tipousuario = ''
     infoLogin.email = ''
     // console.log(infoLogin)
-    this.apiProvider.postAutenticacaoUsuario(JSON.stringify(infoLogin))
-    this.nav.setRoot(TabsPage);
+    this.apiProvider.postAutenticacaoUsuario(JSON.stringify(infoLogin)).subscribe(data => {console.log(data); this.nav.setRoot(TabsPage)}, err => {console.log(err)})
   }
 
   showLoading() {
