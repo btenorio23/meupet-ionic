@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { MeupetapiProvider } from '../../providers/meupetapi/meupetapi';
 /**
  * Generated class for the PasseadoresPage page.
  *
@@ -17,17 +17,19 @@ export class PasseadoresPage {
 
 	detalhesCaoForm: FormGroup;
 	submitAttempt: boolean = false;
-	petEscolhido;
+	
+  servicos:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, private apiProvider : MeupetapiProvider) {
+    this.servicos = this.getServicos()
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
+  }
 
-  	this.detalhesCaoForm = formBuilder.group({
-  		// firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-  		distancia: [''],
-             passeio_com_caes: [''],
-             pode_alimentar: [''],
-  	});
 
+  getServicos(){
+    this.apiProvider.getPasseios()
+    .then(data => {
+      this.servicos = data;
+    });
   }
 
   public abreMapa() {

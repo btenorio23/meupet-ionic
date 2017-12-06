@@ -67,7 +67,69 @@ export class MeupetapiProvider {
       return Promise.resolve(this.data);
     }
     return new Promise(resolve => {
-      this.http.get(this.url + 'pet')
+      this.http.get(this.url + 'pet/')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+  getPasseios() 
+  {
+    if (this.data) {
+      return Promise.resolve(this.data);
+    }
+    return new Promise(resolve => {
+      this.http.get(this.url + 'servico/tiposervico/P')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+
+  getBanhos() 
+  {
+    if (this.data) {
+      return Promise.resolve(this.data);
+    }
+    return new Promise(resolve => {
+      this.http.get(this.url + 'servico/tiposervico/B')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+
+  getVeterinarios() 
+  {
+    if (this.data) {
+      return Promise.resolve(this.data);
+    }
+    return new Promise(resolve => {
+      this.http.get(this.url + 'servico/tiposervico/V')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+  getTreinamentos() 
+  {
+    if (this.data) {
+      return Promise.resolve(this.data);
+    }
+    return new Promise(resolve => {
+      this.http.get(this.url + 'servico/tiposervico/T')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

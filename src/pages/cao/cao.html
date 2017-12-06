@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Meu Cão</ion-title>
+    <ion-title>Meu Pet</ion-title>
   </ion-navbar>
 
     </ion-header>
@@ -18,7 +18,7 @@
     <ion-list *ngFor="let pet of pets">
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="../assets/imgs/{{pet.nome}}.jpg">
+          <img src="assets/imgs/{{pet.nome}}.jpg">
         </ion-thumbnail>
         <h2>{{pet.nome}}</h2> 
         <h4>| {{pet.raca}} |</h4>
