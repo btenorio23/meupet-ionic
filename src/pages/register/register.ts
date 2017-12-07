@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, IonicPage } from 'ionic-angular';
+import { NavController, AlertController, IonicPage, LoadingController, Loading } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { MeupetapiProvider } from '../../providers/meupetapi/meupetapi';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +14,7 @@ export class RegisterPage {
   detalhesUsuarioForm: FormGroup;
   submitAttempt: boolean = false;
 
-  constructor(private navCtrl: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private apiProvider: MeupetapiProvider, public formBuilder: FormBuilder) {
+  constructor(private navCtrl: NavController, private auth: AuthServiceProvider, private loadingCtrl: LoadingController, private alertCtrl: AlertController, private apiProvider: MeupetapiProvider, public formBuilder: FormBuilder) {
     this.detalhesUsuarioForm = formBuilder.group({
       primeiroNome: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       segundoNome: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -47,50 +47,35 @@ export class RegisterPage {
 
   registraUsuario(informacoesUsuario) {
     informacoesUsuario.tipousuario = ['2']
-    console.log(informacoesUsuario)
-
-    // this.submitAttempt = true;
-    // if (!this.detalhesUsuarioForm.valid) {
-    //   console.log("Dados Invalidos");
-    // }
-    // // else {this.navCtrl.pop();}
-    // else {
-    //   data._value.descricaoUsuario = '-'
-    //   data._value.tipousuario = ['1']
-    //   console.log('Detalhes Usuario', data._value)
-    //   this.apiProvider.postUsuario(data._value)
-    //   this.navCtrl.popToRoot();
-    //   this.navCtrl.push('LoginPage');
-    // }
+    informacoesUsuario.imagemUsuario = null
+    this.submitAttempt = true;
+    if (!this.detalhesUsuarioForm.valid) {
+      this.preenchaCorretamente()
+    }
+    else {
+      this.apiProvider.postCriacaoUsuario(JSON.stringify(informacoesUsuario)).subscribe(data => {console.log(data); this.usuarioCriado(); this.navCtrl.popToRoot();}, err => {console.log(err); return false})
+    }
   }
 
-  // getUsuario() {
-  //   this.apiProvider.getUsuarios()
-  //   .then(data => {
-  //     this.pets = data;
-  //   });
-  // }
+  preenchaCorretamente() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: 'Preencha corretamente os dados!',
+    });
+    loading.present();
+    setTimeout(() => {
+      loading.dismiss();
+    }, 1000);
+  }
 
-  // public register() {
-  //     this.pets = this.getUsuario()    
-  // }
+  usuarioCriado() {
+    let loading = this.loadingCtrl.create({
+      content: 'Usuários Criado!',
+    });
+    loading.present();
+    setTimeout(() => {
+      loading.dismiss();
+    }, 1000);
+  }
 
-  // showPopup(title, text) {
-  //   let alert = this.alertCtrl.create({
-  //     title: title,
-  //     subTitle: text,
-  //     buttons: [
-  //       {
-  //         text: 'OK',
-  //         handler: data => {
-  //           if (this.createSuccess) {
-  //             this.nav.popToRoot();
-  //             this.nav.push('LoginPage');
-  //           }
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   alert.present();
-  // }
 }

@@ -26,27 +26,8 @@ export class MeupetapiProvider {
   {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-
-    this.http.post(this.url + 'usuario/login/', informacaoUsuario, {headers: headers})
-      .map(res => res.json())
-      .subscribe(data => {console.log(data)})
-
+    return this.http.post(this.url + 'usuario/registrar/', informacaoUsuario, {headers: headers}).map(res => res.json())
   }
-
-
-  // getUsuario(data) {
-  //   let headers = new Headers();
-  //   headers.append('Content-Type', 'application/json');
-  //   console.log('Dado sendo trabalhado', data._value);
-  //   data = JSON.stringify({
-  //     "email": data._value.email + '',
-  //     "senha": data._value.senha + '',
-  //   });
-  //   console.log('Dado sendo enviado para login', data);
-  //   return this.http.post(this.url + 'login/', JSON.stringify(data), { headers: headers })
-  //     .map(res => res.json())
-  //     .subscribe(data => { console.log('Dados retornados', data); });
-  // }
 
   getPets() 
   {
