@@ -19,14 +19,14 @@ export class PasseadoresPage {
 	submitAttempt: boolean = false;
 	
   servicos:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, private apiProvider : MeupetapiProvider) {
-    this.servicos = this.getServicos(this.tipoServico)
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, private apiProvider : MeupetapiProvider)
+  {
   }
 
-  getServicos(tipoServico)
+  getServicos()
   {
-    this.apiProvider.getServicos(tipoServico)
+    console.log(this.tipoServico)
+    this.apiProvider.getServicos(this.tipoServico)
     .then(data => {
       this.servicos = data;
     });
@@ -36,10 +36,16 @@ export class PasseadoresPage {
   	this.navCtrl.push('ContrataServicoPage');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PasseadoresPage');
+  ionViewWillEnter() {
+    console.log('ENTRANDO NA PAGINA')
+    this.servicos = null
     this.tipoServico = this.navParams.get('tipoPasseio');
     console.log('TIPO SERVICO:', this.tipoServico)
+    this.getServicos()
+  }
+
+  ionViewWillLeave() {
+    this.servicos = null
   }
 
 }
