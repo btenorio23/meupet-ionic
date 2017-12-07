@@ -37,15 +37,8 @@ export class PasseadoresPage {
   }
 
   ionViewWillEnter() {
-    console.log('ENTRANDO NA PAGINA')
-    this.servicos = null
     this.tipoServico = this.navParams.get('tipoPasseio');
-    console.log('TIPO SERVICO:', this.tipoServico)
     this.getServicos()
-  }
-
-  ionViewWillLeave() {
-    this.servicos = null
   }
 
 }

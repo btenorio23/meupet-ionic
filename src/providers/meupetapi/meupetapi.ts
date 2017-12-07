@@ -31,9 +31,6 @@ export class MeupetapiProvider {
 
   getPets() 
   {
-    if (this.data) {
-      return Promise.resolve(this.data);
-    }
     return new Promise(resolve => {
       this.http.get(this.url + 'pet/')
         .map(res => res.json())
@@ -46,9 +43,6 @@ export class MeupetapiProvider {
 
   getServicos(tiposervico) 
   {
-    if (this.data) {
-      return Promise.resolve(this.data);
-    }
     return new Promise(resolve => {
       this.http.get(this.url + 'servico/provedortiposervico/' + tiposervico)
         .map(res => res.json())
