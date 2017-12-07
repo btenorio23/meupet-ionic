@@ -41,16 +41,18 @@ export class LoginPage {
     infoLogin.segundoNome = ''
     infoLogin.tipousuario = ''
     infoLogin.email = ''
-    // console.log(infoLogin)
-    this.apiProvider.postAutenticacaoUsuario(JSON.stringify(infoLogin)).subscribe(data => {console.log(data); this.nav.setRoot(TabsPage)}, err => {console.log(err)})
+    this.apiProvider.postAutenticacaoUsuario(JSON.stringify(infoLogin)).subscribe(data => {this.showLoading(); console.log(data); this.nav.setRoot(TabsPage)}, err => {this.showLoading(); console.log(err); return false})
   }
 
   showLoading() {
-    this.loading = this.loadingCtrl.create({
-      content: 'Please wait...',
+    let loading = this.loadingCtrl.create({
+      content: 'Validando login...',
       dismissOnPageChange: true
     });
-    this.loading.present();
+    loading.present();
+    setTimeout(() => {
+      loading.dismiss();
+    }, 5000);
   }
 
   // showError(text) {
