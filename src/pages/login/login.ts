@@ -41,7 +41,7 @@ export class LoginPage {
     infoLogin.segundoNome = ''
     infoLogin.tipousuario = ''
     infoLogin.email = ''
-    this.apiProvider.postAutenticacaoUsuario(JSON.stringify(infoLogin)).subscribe(data => {this.showLoading(); console.log(data); this.nav.setRoot(TabsPage)}, err => {this.showLoading(); console.log(err); return false})
+    this.apiProvider.postAutenticacaoUsuario(JSON.stringify(infoLogin)).subscribe(data => {this.showLoading(); this.apiProvider.usuario_id=data.id; console.log(data); this.nav.setRoot(TabsPage)}, err => {this.showLoading(); console.log(err); return false})
   }
 
   showLoading() {

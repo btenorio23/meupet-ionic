@@ -33,16 +33,20 @@ export class CaoPage {
 
   modoEditar(pet) {
     console.log("Pet escolhido foi: " + pet.nome);
-    this.navCtrl.push("DetalhesCaoPage", {pet});
+    this.navCtrl.push("DetalhesCaoPage", {pet, adicionar:0});
   }
 
   adicionaPet() {
     console.log("adicionando um novo pet");
-    this.navCtrl.push("DetalhesCaoPage");
+    this.navCtrl.push("DetalhesCaoPage", {adicionar:1});
   }
 
   ionViewDidLoad() {
     // console.log(this.pets)
+  }
+
+  ionViewWillEnter() {
+    this.pets = this.getPets()
   }
 
 }

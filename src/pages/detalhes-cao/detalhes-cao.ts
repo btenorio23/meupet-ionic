@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MeupetapiProvider } from '../../providers/meupetapi/meupetapi';
 
 /**
  * Generated class for the DetalhesCaoPage page.
@@ -18,8 +19,9 @@ export class DetalhesCaoPage {
   detalhesCaoForm: FormGroup;
   submitAttempt: boolean = false;
   petEscolhido;
+  criarPet:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public alertCtrl: AlertController, private apiProvider: MeupetapiProvider) {
 
   	this.detalhesCaoForm = formBuilder.group({
   		// firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -52,18 +54,28 @@ export class DetalhesCaoPage {
           confirm.present();
 }
 
-  save(){
+  save(detalhesCao){
+    // detalhesCao.imagemPet = null
+    detalhesCao.dono = this.apiProvider.usuario_id
       this.submitAttempt = true;
       if(!this.detalhesCaoForm.valid){
       		console.log("Dados Invalidos");
       }
-      else {this.navCtrl.pop();}
+      else{
+        if(this.criarPet == 1) {
+          this.apiProvider.postCriacaoPet(JSON.stringify(detalhesCao)).subscribe(data => {console.log(data); this.navCtrl.pop();}, err => {console.log(err); this.navCtrl.pop();})
+        }
+        else{
+          this.apiProvider.putPet(JSON.stringify(detalhesCao), this.petEscolhido.id).subscribe(data => {console.log(data); this.navCtrl.pop();}, err => {console.log(err); this.navCtrl.pop();})
+        }
+      }
   }
 
 
   ionViewDidLoad() {
     console.log("Detalhes Cão Carregada");
     this.petEscolhido = this.navParams.get('pet');
+    this.criarPet = this.navParams.get('adicionar')
     if(this.petEscolhido) {
     	console.log(this.petEscolhido);
     	this.detalhesCaoForm.controls['nome'].setValue(this.petEscolhido.nome);

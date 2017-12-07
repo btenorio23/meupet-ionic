@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MeupetapiProvider } from '../../providers/meupetapi/meupetapi';
 
 /**
  * Generated class for the PerfilPage page.
@@ -14,7 +15,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PerfilPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  usuario: any;
+  usuario_img: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private apiProvider: MeupetapiProvider) {
+    this.usuario = this.getPerfilUsuario()
+  }
+
+  getPerfilUsuario() {
+    this.apiProvider.getPerfilUsuario()
+    .then(data => {
+      this.usuario = data;
+    });
+    // console.log(this.pets)
   }
 
   ionViewDidLoad() {
@@ -22,7 +34,7 @@ export class PerfilPage {
   }
 
   public abreHistoricoPasseios() {
-  	this.navCtrl.push('HistoricoServicosPage');
+    this.navCtrl.push('HistoricoServicosPage');
   }
 
 }
