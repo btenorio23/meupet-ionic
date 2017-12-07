@@ -1,6 +1,6 @@
 {
   "name": "passecao_ionic",
-  "app_id": "",
+  "app_id": "250eb827",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

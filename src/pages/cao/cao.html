@@ -18,7 +18,7 @@
     <ion-list *ngFor="let pet of pets">
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="assets/imgs/{{pet.nome}}.jpg">
+          <img src="http://meupetapi.herokuapp.com/api/v1/pet/{{pet.id}}/picture/">
         </ion-thumbnail>
         <h2>{{pet.nome}}</h2> 
         <h4>| {{pet.raca}} |</h4>

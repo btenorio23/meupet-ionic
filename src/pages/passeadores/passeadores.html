@@ -17,11 +17,11 @@
     <ion-list *ngFor="let servico of servicos">
       <ion-item>
         <ion-thumbnail item-start>
-        
+         <img src="http://meupetapi.herokuapp.com/api/v1/usuario/{{servico.id}}/picture/">
         </ion-thumbnail>
-        <h2>{{servico.id}}</h2> 
-        <h4>| {{servico.tipoPasseio}} |</h4>
-        <p>{{servico.passeador}}</p>
+        <h2>{{servico.primeiroNome}}</h2> 
+
+        <p>{{servico.email}}</p>
         <!-- <button ion-button clear item-end [navPush]="detalhesCao">Editar</button> -->
         <button ion-button clear item-end (click)="modoEditar(pet)">Contratar</button>
       </ion-item>
