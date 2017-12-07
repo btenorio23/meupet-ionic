@@ -14,19 +14,19 @@ import { MeupetapiProvider } from '../../providers/meupetapi/meupetapi';
   templateUrl: 'passeadores.html',
 })
 export class PasseadoresPage {
-
+     tipoServico: any;
 	detalhesCaoForm: FormGroup;
 	submitAttempt: boolean = false;
 	
   servicos:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, private apiProvider : MeupetapiProvider) {
-    this.servicos = this.getServicos()
+    this.servicos = this.getServicos(this.tipoServico)
 
   }
 
-
-  getServicos(){
-    this.apiProvider.getPasseios()
+  getServicos(tipoServico)
+  {
+    this.apiProvider.getServicos(tipoServico)
     .then(data => {
       this.servicos = data;
     });
@@ -38,6 +38,8 @@ export class PasseadoresPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PasseadoresPage');
+    this.tipoServico = this.navParams.get('tipoPasseio');
+    console.log('TIPO SERVICO:', this.tipoServico)
   }
 
 }
